@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "steps": {
+    "node_modules/.pnpm/workflow@4.2.0-beta.74_@nes_79529232d400b9076820c9abb19e2234/node_modules/workflow/dist/stdlib.js": {
+      "fetch": {
+        "stepId": "step//workflow@4.2.0-beta.74//fetch"
+      }
+    },
+    "app/api/upload/generate-description.ts": {
+      "generateDescription": {
+        "stepId": "step//./app/api/upload/generate-description//generateDescription"
+      }
+    },
+    "app/api/upload/index-image.ts": {
+      "indexImage": {
+        "stepId": "step//./app/api/upload/index-image//indexImage"
+      }
+    },
+    "app/api/upload/upload-image.ts": {
+      "uploadImage": {
+        "stepId": "step//./app/api/upload/upload-image//uploadImage"
+      }
+    },
+    "node_modules/.pnpm/workflow@4.2.0-beta.74_@nes_79529232d400b9076820c9abb19e2234/node_modules/workflow/dist/internal/builtins.js": {
+      "__builtin_response_array_buffer": {
+        "stepId": "__builtin_response_array_buffer"
+      },
+      "__builtin_response_json": {
+        "stepId": "__builtin_response_json"
+      },
+      "__builtin_response_text": {
+        "stepId": "__builtin_response_text"
+      }
+    }
+  },
+  "workflows": {
+    "app/api/upload/process-image.ts": {
+      "processImage": {
+        "workflowId": "workflow//./app/api/upload/process-image//processImage",
+        "graph": {
+          "nodes": [],
+          "edges": []
+        }
+      }
+    }
+  },
+  "classes": {}
+}
