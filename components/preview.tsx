@@ -24,28 +24,33 @@ export const Preview = ({ url, priority }: PreviewProps) => (
       <div className="[backface-visibility:hidden]">
         <Image
           alt={url}
-          className="rounded-md w-full h-auto"
-          height={630}
+          className="rounded-md w-full h-[600px] object-cover"
+          height={600}
           priority={priority}
-          sizes="630px"
+          sizes="600px"
           src={url}
-          width={630}
+          width={600}
         />
       </div>
 
       {/* Back Face */}
-      <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-2">
+      <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col p-2">
         <Drawer direction="top">
-          <Card className="w-full h-full flex flex-col border-none shadow-none bg-transparent items-center justify-center">
-            <CardHeader>
+          <Card className="w-full h-full flex flex-col border-none shadow-none bg-transparent">
+            {/* Header: Sticky at the top */}
+            <CardHeader className="shrink-0 flex-none pb-2">
               <CardTitle className="text-center">Image Actions</CardTitle>
             </CardHeader>
-            <CardContent className="flex-1 flex items-center justify-center">
+            
+            {/* Body: Scrollable region between the header and footer */}
+            <CardContent className="flex-1 overflow-y-auto flex flex-col items-center justify-center py-4">
               <p className="text-sm text-muted-foreground text-center">Flip over to create.</p>
             </CardContent>
-            <CardFooter className="mt-auto w-full flex justify-center pb-4">
+            
+            {/* Footer: Sticky at the bottom */}
+            <CardFooter className="shrink-0 flex-none flex justify-center pt-2 pb-4">
               <DrawerTrigger asChild>
-                <Button>Create</Button>
+                <Button className="w-full">Create</Button>
               </DrawerTrigger>
             </CardFooter>
           </Card>
