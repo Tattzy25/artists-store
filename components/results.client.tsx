@@ -47,7 +47,7 @@ export const ResultsClient = ({ defaultData }: ResultsClientProps) => {
   return (
     <>
       {hasImages ? (
-        <div className="gap-4 sm:columns-2 md:columns-3 lg:columns-2 xl:columns-3">
+        <div className="gap-4 sm:columns-2 md:columns-3 lg:columns-5">
           {images.map((image, index) => (
             <Preview
               key={image.url}
@@ -124,7 +124,7 @@ export const ResultsClient = ({ defaultData }: ResultsClientProps) => {
             <Loader2Icon className="size-4 animate-spin" />
           </Button>
         ) : (
-          <UploadButton />
+          <UploadButton disabled />
         )}
       </form>
     </>

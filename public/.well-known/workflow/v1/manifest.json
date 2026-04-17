@@ -6,9 +6,9 @@
         "stepId": "step//workflow@4.2.0-beta.74//fetch"
       }
     },
-    "app/api/upload/generate-description.ts": {
-      "generateDescription": {
-        "stepId": "step//./app/api/upload/generate-description//generateDescription"
+    "app/api/upload/upload-image.ts": {
+      "uploadImage": {
+        "stepId": "step//./app/api/upload/upload-image//uploadImage"
       }
     },
     "app/api/upload/index-image.ts": {
@@ -16,9 +16,9 @@
         "stepId": "step//./app/api/upload/index-image//indexImage"
       }
     },
-    "app/api/upload/upload-image.ts": {
-      "uploadImage": {
-        "stepId": "step//./app/api/upload/upload-image//uploadImage"
+    "app/api/upload/generate-description.ts": {
+      "generateDescription": {
+        "stepId": "step//./app/api/upload/generate-description//generateDescription"
       }
     },
     "node_modules/.pnpm/workflow@4.2.0-beta.74_@nes_79529232d400b9076820c9abb19e2234/node_modules/workflow/dist/internal/builtins.js": {

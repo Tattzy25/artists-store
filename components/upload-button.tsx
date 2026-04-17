@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useUploadedImages } from "@/components/uploaded-images-provider";
 
-export const UploadButton = () => {
+export const UploadButton = ({ disabled }: { disabled?: boolean }) => {
   const { addImage } = useUploadedImages();
   const inputRef = useRef<HTMLInputElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -66,6 +66,7 @@ export const UploadButton = () => {
           pathname: file.name,
           contentType: file.type,
           contentDisposition: `attachment; filename="${file.name}"`,
+          etag: "",
         },
       };
     });
@@ -236,16 +237,25 @@ export const UploadButton = () => {
         onChange={handleChange}
         ref={inputRef}
         type="file"
+        disabled={isUploading || isDemo || disabled}
       />
       <Button
         className="shrink-0 rounded-full disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-        disabled={isUploading || isDemo}
+        disabled={isUploading || isDemo || disabled}
         onClick={() => inputRef.current?.click()}
         size="icon"
         type="button"
         variant="ghost"
       >
-        <ImageUpIcon className="size-4" />
+        <span
+          style={{
+            fontFamily: "var(--font-rock-salt)",
+            fontSize: "1.2rem",
+            lineHeight: "1",
+          }}
+        >
+          T
+        </span>
       </Button>
     </>
   );
