@@ -28,6 +28,8 @@ export const Preview = ({ url, priority }: PreviewProps) => {
   const [colorType, setColorType] = useState("black");
   const [thumbnail, setThumbnail] = useState<string | null>(null);
   const [promptText, setPromptText] = useState("");
+  const [styleText, setStyleText] = useState("");
+  const [flipped, setFlipped] = useState(false);
   
   // Drawer states
   const [isTopDrawerOpen, setIsTopDrawerOpen] = useState(false);
@@ -61,11 +63,14 @@ export const Preview = ({ url, priority }: PreviewProps) => {
 
   return (
     <div className="group mb-4 [perspective:1000px]">
-      <div className="relative transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-xl bg-card p-2 shadow-xl">
+      <div 
+        className={`relative transition-all duration-500 [transform-style:preserve-3d] rounded-xl bg-card p-2 shadow-xl cursor-pointer md:group-hover:[transform:rotateY(180deg)] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}
+        onClick={() => setFlipped(!flipped)}
+      >
         {/* Front Face */}
         <div className="[backface-visibility:hidden]">
           <Image
-            alt={url}
+            alt="Tattoo design preview"
             className="rounded-md w-full h-[600px] object-cover"
             height={600}
             priority={priority}
@@ -152,6 +157,8 @@ export const Preview = ({ url, priority }: PreviewProps) => {
                         <Label htmlFor="prompt" className="mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Prompt / Description</Label>
                         <Textarea
                           id="prompt"
+                          value={promptText}
+                          onChange={(e) => setPromptText(e.target.value)}
                           className="flex-1 resize-none text-sm bg-muted/5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                           placeholder="Describe your tattoo design..."
                         />
@@ -163,7 +170,13 @@ export const Preview = ({ url, priority }: PreviewProps) => {
                   <div className="flex flex-col gap-4 flex-1 justify-start">
                     <div>
                       <Label htmlFor="style" className="mb-2 block text-xs font-semibold text-muted-foreground uppercase tracking-wider">Style</Label>
-                      <Input id="style" className="h-10 text-sm bg-muted/5" placeholder="e.g. Traditional, Realism" />
+                      <Input 
+                        id="style" 
+                        value={styleText}
+                        onChange={(e) => setStyleText(e.target.value)}
+                        className="h-10 text-sm bg-muted/5" 
+                        placeholder="e.g. Traditional, Realism" 
+                      />
                     </div>
 
                     <div>
@@ -214,7 +227,7 @@ export const Preview = ({ url, priority }: PreviewProps) => {
 
           {/* Bottom Drawer for Generated Results */}
           <Drawer direction="bottom" open={isBottomDrawerOpen} onOpenChange={setIsBottomDrawerOpen}>
-            <DrawerContent className="fixed bottom-0 left-0 right-0 h-[90vh] flex flex-col pt-12 pb-8">
+            <DrawerContent className="fixed bottom-0 left-0 right-0 h-[90vh] flex flex-col">
               {/* Absolute X Button in Top Right */}
               <DrawerClose asChild>
                 <Button variant="ghost" size="icon" className="absolute top-4 right-4 md:right-[50px] z-50">
@@ -227,14 +240,14 @@ export const Preview = ({ url, priority }: PreviewProps) => {
               <DrawerTitle className="sr-only">Generated Tattoo Result</DrawerTitle>
 
               {/* Main Content Area */}
-              <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-[50px] h-full">
+              <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-[50px] h-full pb-6">
                 
                 {/* Center Image Area - Allows natural image dimensions to dictate aspect ratio natively */}
-                <div className="relative h-full w-full flex justify-center items-center overflow-hidden rounded-2xl shadow-2xl">
+                <div className="relative h-full w-full flex justify-center items-center">
                   <Image
                     src={url}
                     alt="Generated tattoo design"
-                    className="object-contain w-full h-full"
+                    className="object-contain w-full h-full drop-shadow-2xl rounded-xl"
                     fill
                     unoptimized
                   />
