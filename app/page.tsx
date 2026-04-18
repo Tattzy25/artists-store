@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const ImagesSkeleton = () => (
-  <div className="gap-4 sm:columns-2 md:columns-3 lg:columns-4">
+  <div className="columns-2 gap-4 sm:columns-2 md:columns-3 lg:columns-4">
     {Array.from({ length: 9 }, (_, idx) => (
       <div 
         className="mb-4 rounded-xl bg-card p-2 shadow-xl h-[616px] w-full" 

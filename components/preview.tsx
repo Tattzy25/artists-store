@@ -240,14 +240,14 @@ export const Preview = ({ url, priority }: PreviewProps) => {
               <DrawerTitle className="sr-only">Generated Tattoo Result</DrawerTitle>
 
               {/* Main Content Area */}
-              <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-[50px] h-full py-6">
+              <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-[50px] h-full pt-10 pb-6">
                 
-                {/* Center Image Area - Uses a style object for object-contain while enforcing a dynamically rounded shape on the image itself */}
-                <div className="relative h-full w-full flex justify-center items-center overflow-hidden">
+                {/* Center Image Area */}
+                <div className="relative h-full w-full flex justify-center items-center">
                   <img
                     src={url}
                     alt="Generated tattoo design"
-                    className="h-full w-auto object-contain rounded-2xl drop-shadow-2xl"
+                    className="max-h-full w-auto object-contain rounded-2xl drop-shadow-2xl"
                   />
                 </div>
                 
