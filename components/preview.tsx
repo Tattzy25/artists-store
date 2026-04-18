@@ -69,15 +69,16 @@ export const Preview = ({ url, priority }: PreviewProps) => {
       >
         {/* Front Face */}
         <div className="[backface-visibility:hidden]">
-          <Image
-            alt="Tattoo design preview"
-            className="rounded-md w-full h-[600px] object-cover"
-            height={600}
-            priority={priority}
-            sizes="600px"
-            src={url}
-            width={600}
-          />
+          <div className="relative w-full aspect-[4/5] md:h-[600px]">
+            <Image
+              alt="Tattoo design preview"
+              className="rounded-md object-cover"
+              priority={priority}
+              sizes="(max-width: 768px) 50vw, 600px"
+              src={url}
+              fill
+            />
+          </div>
         </div>
 
         {/* Back Face */}
