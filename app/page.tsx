@@ -9,20 +9,13 @@ export const metadata: Metadata = {
 };
 
 const ImagesSkeleton = () => (
-  <div className="columns-3 gap-4">
-    {Array.from({ length: 9 }, (_, idx) => {
-      // Deterministically pick an aspect ratio for each skeleton (to keep keys and aspect ratio stable)
-      const aspects = [
-        "aspect-square", // 1:1
-        "aspect-video", // 16:9
-        "aspect-[9/16]", // 9:16; needs tailwind support or define this utility in your css
-      ];
-      // Use modulo for stable assignment
-      const aspect = aspects[idx % aspects.length];
-      // Compose the className
-      const className = `mb-4 rounded-xl bg-card p-2 shadow-xl ${aspect}`;
-      return <div className={className} key={`skeleton-${aspect}-${idx}`} />;
-    })}
+  <div className="gap-4 sm:columns-2 md:columns-3 lg:columns-4">
+    {Array.from({ length: 9 }, (_, idx) => (
+      <div 
+        className="mb-4 rounded-xl bg-card p-2 shadow-xl h-[616px] w-full" 
+        key={`skeleton-${idx}`} 
+      />
+    ))}
   </div>
 );
 
